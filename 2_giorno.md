@@ -45,7 +45,7 @@ Essere dirigenti non significa avere accesso totale.
 - avere accesso parziale ad altri settori
 - vedere solo ciò che è necessario per il suo ruolo (principio del least privilege)
 
-3. Creazione di gruppi separati e privilegiati
+3. Creazione di gruppi separati e privilegiati (RBAC)
 Le aziende creano gruppi di sicurezza:
 - gruppi standard (impiegati)
 - gruppi avanzati (team leader, manager)
