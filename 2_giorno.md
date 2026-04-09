@@ -56,6 +56,9 @@ Le aziende creano gruppi di sicurezza:
 - vedere dati sensibili
 - interagire con altri reparti ad alto livello
 
+autenticazione → identità dell'individuo o periferica
+autorizzazione → attività possibili da svolgere dopo essere stati autenticati
+
 ### Zero Trust significa
 - il sistema non si fida mai di nessuno, nemmeno se è già dentro la rete.
 - Ogni accesso viene verificato continuamente:
@@ -92,10 +95,64 @@ Nel modello Zero Trust:
 - ma ogni accesso viene comunque verificato
 - il token ha durata limitata
 - il sistema controlla continuamente contesto e rischio
-# SPAZI DI NOME
 
 # GESTIONE DELLE CHIAVI
+La gestione delle chiavi è prettamente umana spesso non viene considerato il lato umano. Una chiave diventa a rischio quando banalmente entrano in gioco emozioni umana negative ( rabbia, invidia, malcotento generale) il sistema di sicurezza dovrebbe essere controllato e consapevolmente anche in base a questo prendere iniziative per modifica accessi , password e attività
+
+### certificati digitali
+I certificati digitali sono uno degli elementi più importanti della sicurezza informatica moderna.
+Servono a dimostrare l’identità di un sito, un server, un utente o un dispositivo in modo sicuro e verificabile.
+Un certificato digitale è un documento elettronico firmato da un’autorità fidata (CA – Certificate Authority) che contiene:
+- l’identità del soggetto (es. www.google.com)
+- la chiave pubblica del soggetto
+- la firma digitale della CA
+- la data di validità
+- informazioni tecniche (algoritmi, estensioni, ecc.)
+SSL (Secure Sockets Layer) è un protocollo nato negli anni ’90 per rendere sicure le comunicazioni su Internet cifrando i dati tra client e server, autenticare il server tramite certificato digitale, impedir eintercettazioni MITM il precursore del certificato __HTTPS__
+Oggi SSL è considerato obsoleto.
+È stato sostituito da TLS (Transport Layer Security), che è essenzialmente piu sicuro piu veloce e piu aggiornato
+
+Tipi di certificati
+1. DV (Domain Validation)
+- Verifica solo il dominio
+- Usato per siti normali
+- Rapido ed economico
+2. OV (Organization Validation)
+- Verifica anche l’azienda
+- Più affidabile
+3. EV (Extended Validation)
+- Verifica approfondita dell’azienda
+- Massima fiducia (banche, istituzioni)
+
+A cosa serve un certificato digitale:
+1. Autenticare l’identità
+- Dimostra che un sito o un server è davvero chi dice di essere.
+Quando si visita https://www.dns.it, il browser controlla il certificato per verificare che sia davvero Amazon.
+2. Crittografare la comunicazione
+Grazie alla chiave pubblica contenuta nel certificato, il browser può stabilire una connessione HTTPS sicura.
+3. Garantire integrità
+Assicura che i dati non siano stati modificati durante il trasferimento.
+
+Come funziona
+Ti colleghi a un sito HTTPS
+Il sito ti invia il suo certificato digitale
+Il browser controlla:
+se è firmato da una CA fidata
+se non è scaduto
+se il dominio corrisponde
+Se tutto è ok → connessione sicura
+Browser e server si scambiano una chiave di sessione per cifrare i dati
+
+Le Certificate Authority (CA)
+- DigiCert
+- Sectigo
+- GlobalSign
+- Let’s Encrypt (gratuita)
+- Entrust
+Sono enti riconosciuti a livello mondiale per il rilascio di certificati digitali.
 
 # GARANTI DI CHIAVI
+Il garante di chiavi è un sistema che trasferisce una chiave sensibile o privata ad un terzo soggetto finche delle determinate condizioni non vengono soddisfatte.
+La problematica al riguarda di questo soggetto riguarda la fiducia e la valutazione dell'onestà rispetto a chi o cos'è il soggetto a cui viene inviata la chiave. La domanda sembra scontata...perche passare la mia chiave privata ad un terzo? poiche essendo umani potremmo perdere semplicemente la chiave, dimenticarla, subire un danno nella posizione di salvataggio della chiave...sostanzialmente è come avere un buckup della propria chiave privata in modo da non perderla mai definitivamente
 
 # RIEPILOGO
