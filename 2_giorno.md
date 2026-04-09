@@ -1,5 +1,5 @@
-# FODNAMENTI DI CRITTOGRAFIA
-la necessita della crittografia è stata necessaria poiche inizialmente i dati venivano trsmessi in chiaro e attraverso router o connessioni utenti malevoli potevano porsi nel mezzo per intercettare i dati durante le trasmissioni (MAN IN THE MIDDLE) svolgendo poi delle truffe a carico delle persone che avevano trsmesso i dati. La codifica ncessita ovviamente di una chiave di decodifica per avere un messaggio chiaro e leggibile quindi successivamente furono create dei programmi di codifica e solo il ricevente specifico aveva la chiave di decodifica per decifrare il messaggio.
+# FONDAMENTI DI CRITTOGRAFIA
+la necessita della crittografia è stata necessaria poiche inizialmente i dati venivano trasmessi in chiaro e attraverso router o connessioni utenti malevoli potevano porsi nel mezzo per intercettare i dati durante le trasmissioni (MAN IN THE MIDDLE) svolgendo poi delle truffe a carico delle persone che avevano trasmesso i dati. La codifica necessità ovviamente di una chiave di decodifica per avere un messaggio chiaro e leggibile quindi successivamente furono create dei programmi di codifica e solo il ricevente specifico aveva la chiave di decodifica per decifrare il messaggio.
 
 # CYBER SECURITY
 protegge:
@@ -21,9 +21,9 @@ utente1 → messaggio → codifica → internet → messaggio codificato → dec
 - utilizzo di due chiavi una pubblica e una privata
 
 utente1 → chiave pubblica → utente2 → chiave pubblica2 → utente1
-- gli utenti hanno ognuno 2 chiavi scambiano la chiave pubblica per codificare il messaggio e mantengono la propria chiave privata per decodificare il messaggio stesso quindi il secondo utente avra solo la parte per la codifica ma non quella per decodificare
+- gli utenti hanno ognuno 2 chiavi scambiano la chiave pubblica per codificare il messaggio e mantengono la propria chiave privata per decodificare il messaggio stesso quindi la chiave pubblica serve per cifrare, la privata per decifrare — MA la chiave privata non viene mai condivisa.
 3) HASH crittografia irreversibile
-- posso da un testo in chiaro trasformarlo in una stringa criptata questa stringa è chiamata __HASH__ __DIGEST__ (funzioni irreversibili) ma non posso tornare indietro dalla password criptata alla stringa in chiaro poiche non fa una cifratura ma, trasforma la stringa, non usa una chiave specifica, produce sempre una stringa della stessa lunghezza    E AD UGUALE INPUT DEVE DARE UGUALE OUTPUT, avendo poche informazioni al riguardo non è possibile tornare alla stringa originale, le password vengono hashate prima di essere salvate o comparate al database in modo che inserendo la password in chiaro venga hashata prima di essere inserita o comparata quindi la comparazione avviene a password hashata
+- posso da un testo in chiaro trasformarlo in una stringa questa stringa è chiamata __HASH__ __DIGEST__ (funzioni irreversibili) ma non posso tornare indietro dalla stringa trasformata alla stringa in chiaro poiche non fa una cifratura ma,  È una funzione matematica irreversibile, non una cifratura, non usa una chiave specifica, produce sempre una stringa della stessa lunghezza    E AD UGUALE INPUT DEVE DARE UGUALE OUTPUT, avendo poche informazioni al riguardo non è possibile tornare alla stringa originale, le password vengono hashate prima di essere salvate o comparate al database in modo che inserendo la password in chiaro venga hashata prima di essere inserita o comparata quindi la comparazione avviene a password hashata
 # AUTENTICAZIONE E AUTORIZZAZIONE
 L’autenticazione è il processo attraverso il quale un sistema verifica l’identità di un utente tramite credenziali appropriate (password, token, smart card, dati biometrici).
 Una volta autenticato, l’utente può essere autorizzato ad accedere a specifici dati o risorse in base ai suoi permessi.
@@ -59,6 +59,15 @@ Le aziende creano gruppi di sicurezza:
 autenticazione → identità dell'individuo o periferica
 autorizzazione → attività possibili da svolgere dopo essere stati autenticati
 
+### tecnologie di autenticazione
+1. Password
+2. dati biometri (impronte digitali, iride, voce ecc..)
+3. certificati digitali (tsl, accertamenti tramite protocolli)
+4. OTP ( one time password )
+5. firma elettronica
+6. informazioni private
+ecc...
+
 ### Zero Trust significa
 - il sistema non si fida mai di nessuno, nemmeno se è già dentro la rete.
 - Ogni accesso viene verificato continuamente:
@@ -74,7 +83,7 @@ Nelle grandi aziende i modelli di fiducia si basano sulla segmentazione per sett
 Ogni reparto ha un proprio responsabile che può accedere ai dati del suo settore, mentre l’accesso ai dati degli altri reparti è limitato e concesso solo in base al ruolo e alle necessità operative.
 È possibile creare gruppi separati con livelli di fiducia diversi, così che solo gli utenti autorizzati possano interagire pienamente con più settori.
 I sistemi moderni adottano il modello Zero Trust, secondo cui nessun utente o dispositivo è considerato affidabile a priori. Ogni accesso viene verificato continuamente e concesso solo con i privilegi minimi necessari.
-IAM → IDENTITY ACCESS MANAGMENT
+IAM → IDENTITY ACCESS MANAGMENT (gestione centralizzata di identità, ruoli, permessi e accessi)
 ### SSO → single sign on
 è un sistema che permette a un utente di autenticarsi una sola volta e poi accedere automaticamente a più applicazioni, servizi o piattaforme senza dover reinserire la password ogni volta. 
 1. Migliora la sicurezza generale ma tiene un account privilegiato come "preda"
@@ -95,9 +104,10 @@ Nel modello Zero Trust:
 - ma ogni accesso viene comunque verificato
 - il token ha durata limitata
 - il sistema controlla continuamente contesto e rischio
+-  SSO centralizza l’identità → se un attaccante compromette quell’account, compromette tutto.
 
 # GESTIONE DELLE CHIAVI
-La gestione delle chiavi è prettamente umana spesso non viene considerato il lato umano. Una chiave diventa a rischio quando banalmente entrano in gioco emozioni umana negative ( rabbia, invidia, malcotento generale) il sistema di sicurezza dovrebbe essere controllato e consapevolmente anche in base a questo prendere iniziative per modifica accessi , password e attività
+La gestione delle chiavi è tecnica, ma la vulnerabilità principale è il comportamento umano e spesso questo non viene considerato. Una chiave diventa a rischio quando banalmente entrano in gioco emozioni umana negative ( rabbia, invidia, malcontento generale) il sistema di sicurezza dovrebbe essere controllato e consapevolmente anche in base a questo prendere iniziative per modifica accessi , password e attività oltre ai vari salvataggi in possibili luoghi che potrebbero essere compromessi quali file salvati su pc o comunque connessi ad una rete di cui non sappiamo la sicurezza.
 
 ### certificati digitali
 I certificati digitali sono uno degli elementi più importanti della sicurezza informatica moderna.
@@ -108,7 +118,7 @@ Un certificato digitale è un documento elettronico firmato da un’autorità fi
 - la firma digitale della CA
 - la data di validità
 - informazioni tecniche (algoritmi, estensioni, ecc.)
-SSL (Secure Sockets Layer) è un protocollo nato negli anni ’90 per rendere sicure le comunicazioni su Internet cifrando i dati tra client e server, autenticare il server tramite certificato digitale, impedir eintercettazioni MITM il precursore del certificato __HTTPS__
+SSL (Secure Sockets Layer) è un protocollo nato negli anni ’90 per rendere sicure le comunicazioni su Internet cifrando i dati tra client e server, autenticare il server tramite certificato digitale, impedir eintercettazioni MITM ... __HTTPS__ è un protocollo che usa TLS + certificati digitali.
 Oggi SSL è considerato obsoleto.
 È stato sostituito da TLS (Transport Layer Security), che è essenzialmente piu sicuro piu veloce e piu aggiornato
 
@@ -127,7 +137,7 @@ Tipi di certificati
 A cosa serve un certificato digitale:
 1. Autenticare l’identità
 - Dimostra che un sito o un server è davvero chi dice di essere.
-Quando si visita https://www.dns.it, il browser controlla il certificato per verificare che sia davvero Amazon.
+Quando si visita https://www.dns.it, il browser controlla il certificato per verificare che sia davvero "dns".
 2. Crittografare la comunicazione
 Grazie alla chiave pubblica contenuta nel certificato, il browser può stabilire una connessione HTTPS sicura.
 3. Garantire integrità
@@ -147,12 +157,12 @@ Le Certificate Authority (CA)
 - DigiCert
 - Sectigo
 - GlobalSign
-- Let’s Encrypt (gratuita)
+- Let’s Encrypt
 - Entrust
 Sono enti riconosciuti a livello mondiale per il rilascio di certificati digitali.
 
-# GARANTI DI CHIAVI
+# GARANTI DI CHIAVI (key escrow)
 Il garante di chiavi è un sistema che trasferisce una chiave sensibile o privata ad un terzo soggetto finche delle determinate condizioni non vengono soddisfatte.
-La problematica al riguarda di questo soggetto riguarda la fiducia e la valutazione dell'onestà rispetto a chi o cos'è il soggetto a cui viene inviata la chiave. La domanda sembra scontata...perche passare la mia chiave privata ad un terzo? poiche essendo umani potremmo perdere semplicemente la chiave, dimenticarla, subire un danno nella posizione di salvataggio della chiave...sostanzialmente è come avere un buckup della propria chiave privata in modo da non perderla mai definitivamente
+La problematica al riguarda di questo soggetto riguarda la fiducia e la valutazione dell'onestà rispetto a chi o cos'è il soggetto a cui viene inviata la chiave. La domanda sembra scontata...perche passare la mia chiave privata ad un terzo? poiche essendo umani potremmo perdere semplicemente la chiave, dimenticarla, subire un danno nella posizione di salvataggio della chiave...sostanzialmente è come avere un buckup della propria chiave privata in modo da non perderla mai definitivamente.Il Key Escrow è molto controverso perché implica che un terzo possa accedere alla chiave privata è usato solo in contesti specifici.
 
 # RIEPILOGO
