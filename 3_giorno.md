@@ -190,3 +190,42 @@ Esempi di porte
 - DNS: 53/UDP
 - DHCP: 67/68 UDP
 
+# Amministrazione tramite provider diretto
+Accedi al pannello del provider tramite browser e gestisci tutto da lì:
+
+File manager integrato
+- Database
+- Email
+- DNS
+- Backup
+- Installazione CMS (WordPress, Joomla, ecc.)
+Vantaggi
+- Semplice e immediato: tutto accessibile da interfaccia grafica.
+- Sicurezza maggiore: connessione HTTPS, autenticazione forte, MFA.
+- Backup integrati: spesso automatici.
+- Gestione completa: non solo file, ma anche database, certificati SSL, utenti, ecc.
+- Nessun software da installare: basta un browser.
+
+Svantaggi
+- Meno controllo tecnico rispetto all’accesso diretto ai file.
+- Limitazioni del provider: alcune operazioni avanzate potrebbero non essere disponibili.
+- Dipendenza totale dal pannello: se il pannello ha problemi, non puoi lavorare.
+
+# Amministrazione tramite FTP / SFTP / FTPS
+Usi un client FTP per collegarti al server e gestire direttamente i file del sito.
+
+Differenze tra FTP, FTPS e SFTP
+FTP → NON cifrato (sconsigliato)
+FTPS → FTP + TLS (cifrato)
+SFTP → basato su SSH, molto sicuro
+
+Vantaggi
+- Controllo totale sui file: puoi modificare, cancellare, caricare tutto.
+- Perfetto per sviluppatori: utile per deploy manuali o debugging.
+- Indipendente dal pannello: funziona anche se il provider ha problemi.
+
+Svantaggi
+- FTP classico è insicuro: password in chiaro → MITM, sniffing.
+- Rischio errori: basta cancellare un file sbagliato e il sito cade.
+- Nessuna gestione avanzata: niente database, DNS, email, backup.
+- Richiede software esterno.
