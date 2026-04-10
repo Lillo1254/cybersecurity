@@ -1,5 +1,5 @@
 
-# file system
+# FILE SYSTEM
 Struttura gerarchica ad albero
 Il file system organizza file e directory in una struttura gerarchica simile a un albero rovesciato.
 
@@ -190,7 +190,7 @@ Esempi di porte
 - DNS: 53/UDP
 - DHCP: 67/68 UDP
 
-# Amministrazione tramite provider diretto
+## Amministrazione siti web tramite provider diretto
 Accedi al pannello del provider tramite browser e gestisci tutto da lì:
 
 File manager integrato
@@ -211,13 +211,13 @@ Svantaggi
 - Limitazioni del provider: alcune operazioni avanzate potrebbero non essere disponibili.
 - Dipendenza totale dal pannello: se il pannello ha problemi, non puoi lavorare.
 
-# Amministrazione tramite FTP / SFTP / FTPS
+## Amministrazione siti web tramite FTP / SFTP / FTPS
 Usi un client FTP per collegarti al server e gestire direttamente i file del sito.
 
 Differenze tra FTP, FTPS e SFTP
-FTP → NON cifrato (sconsigliato)
-FTPS → FTP + TLS (cifrato)
-SFTP → basato su SSH, molto sicuro
+- FTP → NON cifrato (sconsigliato)
+- FTPS → FTP + TLS (cifrato)
+- SFTP → basato su SSH, molto sicuro
 
 Vantaggi
 - Controllo totale sui file: puoi modificare, cancellare, caricare tutto.
@@ -228,4 +228,75 @@ Svantaggi
 - FTP classico è insicuro: password in chiaro → MITM, sniffing.
 - Rischio errori: basta cancellare un file sbagliato e il sito cade.
 - Nessuna gestione avanzata: niente database, DNS, email, backup.
-- Richiede software esterno.
+- Richiede software esterno. 
+
+# PROTOCOLLO TELNET E SSH
+Telnet è un protocollo ed un applicativo di rete molto vecchio (anni ’70) che permette di collegarsi a un dispositivo remoto tramite connessione testuale.
+È stato fondamentale nella storia di Internet, ma oggi è considerato insicuro perché non cifra nulla: tutto passa in chiaro (password comprese).
+Ad oggi è stato sostituito da SSH che cifra completamente i dati supporto utilizzo di chiavi, tunneling ed agent forwarding.
+applicazioni SSH
+ssh (client da terminale Linux/macOS/Windows)
+
+- OpenSSH (server e client)
+- PuTTY (client SSH per Windows)
+- Termius, MobaXterm, ecc.
+Quindi:
+- Telnet = protocollo
+- telnet.exe = programma che usa quel protocollo
+- SSH = protocollo
+- OpenSSH = programma che usa quel protocollo
+
+A cosa serve SSH
+Accedere in modo sicuro a un server remoto.
+Gestire file, configurazioni, servizi.
+Fare tunneling, forwarding, backup, deploy.
+SSH cifra tutto, Telnet no.
+Ogni servizio usa una porta standard:
+
+Servizio	Porta	Protocollo
+Telnet	     23	     Telnet
+SSH	         22	     SSH
+HTTP	     80	     Web non cifrato
+HTTPS	    443	     Web cifrato
+FTP	         21	     File Transfer
+DNS	         53	     Risoluzione nomi
+RDP	       3389	     Desktop remoto
+porta aperta = schermo nero ------- porta chiusa = errore di connessione
+
+## PROXY 
+Un proxy è un “intermediario” tra te e Internet.
+utente → Proxy → Internet
+Internet → Proxy → utente
+Il proxy riceve le tue richieste, le inoltra al server finale e poi ti restituisce la risposta.
+
+1) PER COSA SI USA UN PROXY (scopi reali)
+- Nascondere il tuo IP
+Il sito vede l’IP del proxy, non il tuo.
+- Filtrare o bloccare siti
+Usato in scuole, aziende, reti pubbliche.
+- Controllare il traffico
+Log, monitoraggio, sicurezza.
+- Velocizzare la navigazione
+Proxy caching → salva copie dei contenuti.
+- Accedere a risorse interne
+Proxy aziendali per accedere a server interni.
+- Bypassare restrizioni
+Es. contenuti non disponibili nel tuo paese.
+
+Esistono diverse tipologie di PROXY
+1) HTTP Proxy
+   - Per navigazione web
+   - Non gestisce altri protocolli
+2) SOCKS5 PROXY
+    - flessibilità
+    - supporta tutti i protocolli (SSH, giochi, app)
+
+3) REVERSE PROXY
+    - sta davanti al serve per gestire caching, sicurezza, bilanciamento, routing
+si può utilizzare con il comando "curl"
+
+SOCKS5 è un tipo di proxy avanzato che instrada il traffico a livello di trasporto, non a livello applicativo.
+- Il server vede l’IP del proxy, non il tuo.
+- Molto usato per accedere a contenuti bloccati.
+Il __BROWSER TOR__ crea all'accesso un proxy SOKCS5 e viene utilizzato per anonimato, bypass censure e blocchi, accesso dark web e ricerca e studio per cyber security
+
