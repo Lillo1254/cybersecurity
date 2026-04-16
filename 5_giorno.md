@@ -96,19 +96,6 @@ Le misure di sicurezza vengono scelte in base alla criticità dell’asset.
     - Sensibilizzazione al phishing
     - Procedure di escalation
 
-# DPO
-Il DPO (Data Protection Officer) è la figura prevista dal GDPR responsabile della supervisione della protezione dei dati personali all’interno di un’organizzazione.
-Il suo ruolo è indipendente e deve garantire che l’azienda rispetti le normative sulla privacy.
-Compiti principali:
-- Monitorare l’applicazione del GDPR e delle normative nazionali.
-- Informare e formare il personale sulle pratiche corrette di protezione dei dati.
-- Effettuare audit e verifiche interne.
-- Fornire consulenza sulla valutazione d’impatto (DPIA).
-- Essere punto di contatto tra azienda e Garante della Privacy.
-Caratteristiche del ruolo:
-- Deve avere competenze giuridiche e tecniche.
-- Non può avere conflitti di interesse.
-- Deve operare con autonomia e indipendenza.
 
 # CHIEF IT
 Il Chief IT (o CIO, Chief Information Officer) è la figura che gestisce l’infrastruttura tecnologica dell’azienda.
@@ -122,10 +109,20 @@ Compiti principali:
 Ruolo nella sicurezza:
 - Il Chief IT è la figura tecnica che mette in pratica le misure di sicurezza, mentre il DPO verifica che siano conformi alle normative.
 
-# POLITICHE GDPR
-Le politiche GDPR sono l’insieme di regole, procedure e misure adottate da un’organizzazione per garantire la conformità al Regolamento Europeo sulla Protezione dei Dati (GDPR).
+# POLITICHE GDPR (General Data Protection Regulation)
+__Liceità, correttezza, trasparenza, minimizzazione dei dati(solo i dati strettamente necessari per un azione specifica)__
+Le politiche GDPR rappresentano l’insieme strutturato di regole, procedure e misure che un’organizzazione adotta per garantire la conformità al 
+Regolamento Europeo 2016/679 (GDPR).
+Non sono un documento unico, ma un sistema di policy, procedure e registri che dimostrano come l’azienda gestisce i dati personali
 Elementi fondamentali:
-- Informative sulla privacy chiare e trasparenti.
+- Informative sulla privacy chiare e trasparenti facilmente accessibili scritte in linguaggio semplice è il documento pubblico principale:
+    - quali dati vengono raccolti
+    - perché vengono trattati
+    - su quale base giuridica
+    - per quanto tempo vengono conservati
+    - chi può accedervi
+    - come esercitare i propri diritti
+    - come contattare il DPO
 - Registro dei trattamenti dei dati personali.
 - Procedure per la gestione dei consensi.
 - Misure tecniche e organizzative per proteggere i dati (cifratura, accessi, backup).
@@ -136,6 +133,60 @@ Obiettivi:
 - Garantire la tutela dei diritti degli interessati.
 - Ridurre i rischi legati al trattamento dei dati.
 - Dimostrare la conformità alle autorità competenti.
+Le politiche GDPR vengono definite internamente dall’organizzazione, ma devono rispettare:
+- Regolamento UE 2016/679 (GDPR)
+- Linee guida del Comitato Europeo per la Protezione dei Dati (EDPB)
+- Normativa nazionale (es. Codice Privacy italiano aggiornato)
+- Best practice internazionali (ISO 27001, ISO 27701, NIST, CIS Controls)
+## Consenso esplicito
+Per trattamenti che lo richiedono (marketing, profilazione, newsletter).
+Il consenso deve essere:
+- libero
+- specifico
+- informato
+- revocabile in ogni momento
+## Moduli e interfacce utente
+Ogni modulo che raccoglie dati deve indicare:
+- finalità
+- base giuridica
+- obbligatorietà o meno dei dati
+- link all’informativa privacy
+# Cookie Policy e Cookie Banner
+Obbligatori quando il sito utilizza cookie non tecnici.
+Devono spiegare:
+- quali cookie sono utilizzati
+- finalità
+- durata
+- terze parti coinvolte
+- possibilità di rifiutare o revocare il consenso
+# Come devono essere documentate internamente
+Le politiche GDPR devono essere:
+- scritte
+- approvate dalla direzione
+- aggiornate periodicamente
+- conservate e disponibili per audit
+Documenti tipici:
+- Manuale GDPR aziendale
+- Registro dei trattamenti
+- Procedure operative (SOP)
+- Verbali di formazione
+- DPIA (Data Protection Impact Assessment) è uno strumento previsto dal GDPR per analizzare e mitigare i rischi derivanti da trattamenti di dati personali che possono presentare un rischio elevato per i diritti e le libertà degli interessati
+- Contratti con fornitori
+-Log di sicurezza e accessi
+
+# DPO
+Il DPO (Data Protection Officer) è la figura prevista dal GDPR responsabile della supervisione della protezione dei dati personali all’interno di un’organizzazione.
+Il suo ruolo è indipendente e deve garantire che l’azienda rispetti le normative sulla privacy.
+Compiti principali:
+- Monitorare l’applicazione del GDPR e delle normative nazionali.
+- Informare e formare il personale sulle pratiche corrette di protezione dei dati.
+- Effettuare audit e verifiche interne.
+- Fornire consulenza sulla valutazione d’impatto (DPIA).
+- Essere punto di contatto tra azienda e Garante della Privacy.
+Caratteristiche del ruolo:
+- Deve avere competenze giuridiche e tecniche.
+- Non può avere conflitti di interesse.
+- Deve operare con autonomia e indipendenza.
 
 # Produzione software proprietario
 IT department:
