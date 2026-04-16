@@ -144,7 +144,8 @@ Tutto ciò che non è nella lista viene bloccato automaticamente
 - limita l’uso di software pirata o non controllato
 
 # INGEGNERIA SOCIALE
-Una delle minacce piu pericole e piu impattante poiche non richiede utilizzo di software o competenze tecniche digitali particolare ma una valutazione della vittima psicologica e l'utilizzo di tecniche di persuasione basate su:
+Una delle minacce piu pericole e piu impattante poiche non richiede utilizzo di software o competenze tecniche digitali particolare ma una valutazione 
+della vittima psicologica e l'utilizzo di tecniche di persuasione basate su:
 - impersonificazione L’attaccante si finge una persona affidabile (collega, tecnico IT, banca, fornitore, ente pubblico) per ottenere informazioni o accessi.
 - creazione di fiducia L’attaccante usa leve psicologiche come urgenza, paura, autorità, curiosità o empatia per convincere la vittima ad agire senza riflettere.
 - Una volta ottenuta la fiducia, l’attaccante utilizza le informazioni recuperate (spesso trovate anche online o nei sistemi aziendali) per:
@@ -158,7 +159,15 @@ Protezione:
 - Formazione continua :
     - Formare regolarmente tutti i dipendenti per riconoscere phishing ingegneria sociale e seguire best practice. un dipendente informato
       è un importante linea di difesa. Organizzare simulazioni periodiche.
-    - 
+    - Password robuste +2FA obbligando l'inserimento di password complesse per lunghezza e complessità di caratteri e autenticazione a due fattori
+    - Aggiornamenti costanti per mantenere sempre aggiornati i sistemi operativi interni del software, firmware e antivirus
+    - Minimo di privilegio per date autorizzazioni strettamente necessarie ai dipendenti per un ruolo specifico  cosi da limitare danni se un account 
+    viene compromesso
+    - backup regolari per mantenere sempre copie di sicurezza dei dati importanti conservate offline o in un luogo separato e testare regolarmente il 
+    ripristino questo è l'antidoto piu efficace al ransomware invece di pagare per la chiave di decrittazione
+    - piano risposta in caso di violazione che consiste nell'aver gia integrato in un testo le politiche da applicare in caso di vuolazione su chi contattare 
+    come isolare i sistemi come comunicare a clienti e autorita cosi facendo si evita il panico nel risolvere il problema e riduce i danni causati da fretta 
+    impulsività è sostanzialmente una guida comportamentale sul da farsi in caso di problemi 
 
 
 __L’obiettivo finale è ingannare la persona, non il computer__
