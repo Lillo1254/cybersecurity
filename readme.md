@@ -24,6 +24,7 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - utilizzo di protocolli
 - sistemi di rete
 - spiegazione componenti hardware e software
+- politiche GDPR
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.

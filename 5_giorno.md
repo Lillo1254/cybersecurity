@@ -136,3 +136,32 @@ Obiettivi:
 - Garantire la tutela dei diritti degli interessati.
 - Ridurre i rischi legati al trattamento dei dati.
 - Dimostrare la conformità alle autorità competenti.
+
+# Produzione software proprietario
+IT department:
+1) Dipartimento di sviluppo:
+    - Analisi di fattibilità e valutazione delle tempistiche, delle tecnologie da utilizzare e delle risorse necessarie
+    - Allineamento con il reparto vendite attesa dell’approvazione commerciale e conferma dei requisiti richiesti dal cliente o dal mercato
+    - Avvio dello sviluppo implementazione del software secondo specifiche tecniche e funzionali
+    - UAT – User Acceptance Test al termine dello sviluppo viene eseguito il test di accettazione da parte degli utenti o del reparto incaricato
+    - Validazione finale se funzionalità, requisiti e performance risultano conformi, il software può passare allo step successivo
+2) Pre-Produzione (Ambiente Intermedio)
+    - È un ambiente separato dalla produzione, utilizzato per testare il software in condizioni simili a quelle reali
+    - Riproduce l’infrastruttura di produzione ma con risorse ridotte per contenere i costi
+    - Permette di individuare problemi non rilevati in sviluppo o UAT.
+    - Consente test di integrazione, performance e compatibilità.
+    - Garantisce che il software sia stabile prima del rilascio pubblico.
+3) Canary test
+    - Tecnica di rilascio controllato per ridurre il rischio di errori in produzione
+    - Il software viene distribuito a un gruppo ristretto di utenti reali
+    - Si monitorano comportamento, performance, errori e possibili vulnerabilità
+    - In caso di problemi, il rilascio può essere immediatamente interrotto senza impattare l’intera utenza
+    - Se il test è positivo, si procede con il rollout completo
+4) Dipartimento di produzione:
+    - È il reparto responsabile della messa in esercizio del software e della sua gestione operativa
+    - Deployment in ambiente di produzione: rilascio ufficiale del software agli utenti finali.
+    - Monitoraggio continuo: controllo costante di performance, sicurezza, stabilità e disponibilità del sistema.
+    - Gestione incidenti: intervento rapido in caso di malfunzionamenti, vulnerabilità o interruzioni del servizio.
+    - Manutenzione e aggiornamenti: applicazione di patch, miglioramenti e nuove versioni del software.
+    - Coordinamento con sviluppo: segnalazione di bug, richieste di miglioramento e feedback operativo.
+    - Garanzia della sicurezza: applicazione delle policy interne, gestione accessi, logging e conformità normativa.
