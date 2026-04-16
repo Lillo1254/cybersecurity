@@ -173,7 +173,19 @@ Documenti tipici:
 - DPIA (Data Protection Impact Assessment) è uno strumento previsto dal GDPR per analizzare e mitigare i rischi derivanti da trattamenti di dati personali che possono presentare un rischio elevato per i diritti e le libertà degli interessati
 - Contratti con fornitori
 -Log di sicurezza e accessi
-
+## PRIVACY BY DESIGN
+La Privacy by Design è un principio del GDPR secondo cui la protezione dei dati deve essere integrata fin dall’inizio nella progettazione 
+di qualsiasi sistema, servizio, applicazione o processo aziendale.
+- la privacy non è un’aggiunta finale, ma un requisito progettuale
+- i rischi devono essere valutati prima di iniziare il trattamento
+- le misure di sicurezza devono essere incorporate nella struttura del sistema
+- ogni nuova funzionalità deve essere analizzata per il suo impatto sui dati personali
+## PRIVACY BY DEFAULT
+La Privacy by Default stabilisce che, per impostazione predefinita, un sistema deve trattare solo i dati strettamente necessari per la finalità prevista.
+- le impostazioni iniziali devono essere le più protettive possibile
+- l’utente non deve fare nulla per proteggere i propri dati
+- i dati raccolti devono essere minimi e proporzionati
+- funzionalità non essenziali (es. marketing, tracking) devono essere disattivate di default
 # DPO
 Il DPO (Data Protection Officer) è la figura prevista dal GDPR responsabile della supervisione della protezione dei dati personali all’interno di un’organizzazione.
 Il suo ruolo è indipendente e deve garantire che l’azienda rispetti le normative sulla privacy.
@@ -187,6 +199,21 @@ Caratteristiche del ruolo:
 - Deve avere competenze giuridiche e tecniche.
 - Non può avere conflitti di interesse.
 - Deve operare con autonomia e indipendenza.
+è obbligatorio avere un DPO solo in 3 casi specifici
+1) Sei un ente publico
+    - Tutti gli organismi pubblici devono avere un DPO, tranne i tribunali quando agiscono in funzione giudiziaria.
+2) Tratti dati personali su larga scala che richiedono monitoraggio regolare e sistematico
+    - piattaforme che tracciano utenti
+    - sistemi di videosorveglianza estesa
+    - servizi online che profilano comportamenti
+    - aziende che monitorano dipendenti o clienti in modo continuativo
+3) Tratti su larga scala categorie particolari di dati o dati giudiziari:
+    - salute
+    - dati biometrici
+    - dati genetici
+    - orientamento religioso o politico
+    - vita sessuale
+    - appartenenza sindacale
 
 # Produzione software proprietario
 IT department:
@@ -216,3 +243,47 @@ IT department:
     - Manutenzione e aggiornamenti: applicazione di patch, miglioramenti e nuove versioni del software.
     - Coordinamento con sviluppo: segnalazione di bug, richieste di miglioramento e feedback operativo.
     - Garanzia della sicurezza: applicazione delle policy interne, gestione accessi, logging e conformità normativa.
+
+# DISASTER RECOVERY
+Il Disaster Recovery (DR) è l’insieme di strategie, procedure e tecnologie che un’organizzazione mette in atto per ripristinare sistemi, 
+dati e servizi IT dopo un evento catastrofico.
+È una componente fondamentale della continuità operativa e della sicurezza informatica
+Il Disaster Recovery è il piano tecnico che permette di riportare in funzione l’infrastruttura IT dopo eventi che ne compromettono la disponibilità
+- guasti hardware gravi
+- incendi, allagamenti, terremoti
+- blackout prolungati
+- attacchi informatici (ransomware, DDoS, compromissioni)
+- errori umani critici
+- malfunzionamenti di rete o data center
+__L’obiettivo è ridurre al minimo i tempi di fermo e limitare la perdita di dati__
+Componenti principali del Disaster Recovery
+1. Backup e ripristino
+    - copie dei dati locali o remote
+    - backup incrementali, differenziali o completi
+    - verifica periodica dei backup
+    - procedure di restore testate
+2. Infrastruttura alternativa
+    - data center secondario
+    - server di emergenza
+    - cloud di failover  per garantire la continuità dei servizi quando l’infrastruttura principale non è più disponibile se avviene un guasto, 
+    un attacco o un disastro, il sistema commuta automaticamente sul cloud
+    - sistemi ridondati
+3. Procedure operative
+    - istruzioni passo‑passo per il ripristino
+    - ruoli e responsabilità del personale
+    - contatti di emergenza
+    - priorità dei servizi da ripristinare
+4. Metriche fondamentali
+    - RTO (Recovery Time Objective): tempo massimo accettabile di fermo
+    - RPO (Recovery Point Objective): quantità massima di dati che si può perdere
+5. Test periodici
+    - simulazioni di disastro
+    - verifica dei tempi reali di ripristino
+    - aggiornamento del piano in base ai risultati
+## In CyberSecurity
+Il Disaster Recovery è strettamente collegato alla sicurezza informatica perché:
+- limita i danni di un attacco ransomware
+- garantisce continuità ai servizi critici
+- evita perdita di dati sensibili
+- riduce l’impatto economico e reputazionale
+- supporta la conformità normativa (GDPR, ISO 27001)
