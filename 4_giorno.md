@@ -153,4 +153,12 @@ Una delle minacce piu pericole e piu impattante poiche non richiede utilizzo di 
     - accedere ai sistemi informatici
     - impossessarsi dei dati della vittima
     - chiedere un riscatto (estorsione)
+
+Protezione:
+- Formazione continua :
+    - Formare regolarmente tutti i dipendenti per riconoscere phishing ingegneria sociale e seguire best practice. un dipendente informato
+      è un importante linea di difesa. Organizzare simulazioni periodiche.
+    - 
+
+
 __L’obiettivo finale è ingannare la persona, non il computer__
