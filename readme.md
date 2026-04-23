@@ -15,21 +15,33 @@ Questa scelta garantisce coerenza, qualità e affidabilità del materiale pubbli
 ## Contenuti presenti
 All’interno della repository sono disponibili spiegazioni semplificate riguardanti:
 
-- concetti fondamentali di cybersecurity  
-- terminologia tecnica essenziale  
-- esempi pratici e scenari reali  
-- buone pratiche per la protezione dei dati  
-- analisi di minacce, vulnerabilità e rischi  
-- principi di sicurezza personale e aziendale 
-- utilizzo di protocolli
-- sistemi di rete
-- spiegazione componenti hardware e software
-- politiche GDPR
+- Concetti fondamentali di cybersecurity  
+- Terminologia tecnica essenziale  
+- Esempi pratici e scenari reali  
+- Buone pratiche per la protezione dei dati  
+- Analisi di minacce, vulnerabilità e rischi  
+- Principi di sicurezza personale e aziendale 
+- Utilizzo di protocolli
+- Sistemi di rete
+- Spiegazione componenti hardware e software
+- Politiche GDPR
+- DPIA (Data Protection Impact Assessment)
+- IAAS (Infrastructure as a Service)
+- SaaS (Software as a Service)
+- IDS IPS E SOC
+- ISO 27001
+- Disaster Recovery
+- Backup
+- NAS (Network Attached Storage)
+- RAID (Redundant Array of Independent Disks)
+- RTO (Recovery Time Objective)
+- Tipi di dati sensibilità e protezione
+- Cancellazione dei file
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
 
 ## Finalità
 La finalità principale è contribuire alla diffusione della cultura della sicurezza informatica.  
-Una maggiore consapevolezza da parte degli utenti rappresenta un elemento chiave per ridurre incidenti, attacchi informatici e comportamenti rischiosi.
+Una maggiore consapevolezza da parte degli utenti rappresenta un elemento chiave per ridurre incidenti, attacchi informatici e comportamenti rischiosi. Conoscenza per proteggerci, per proteggere.
 

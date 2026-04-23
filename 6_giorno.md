@@ -1,4 +1,4 @@
-# DPIA(Data Protection Impact Assessment) valutazione dell'impatto sulla rpotezione dei dati
+# DPIA(Data Protection Impact Assessment) valutazione dell'impatto sulla protezione dei dati
 È un processo strutturato che permette di:
 - descrivere il trattamento e le sue finalità
 - valutarne necessità e proporzionalità
