@@ -5,7 +5,9 @@ Materiale didattico per la diffusione della sicurezza digitale
 Questa repository raccoglie contenuti relativi alla cybersecurity presentati in modo semplice e comprensibile.  
 L’obiettivo è rendere accessibili concetti spesso complessi, così da favorire una maggiore consapevolezza sulla sicurezza informatica nella vita quotidiana e professionale.
 
-Il progetto nasce come parte di un percorso formativo di 150 ore dedicato alla Cyber Security, durante il quale vengono affrontati temi fondamentali come minacce, vulnerabilità, gestione del rischio, buone pratiche e protezione dei dati.
+Il progetto nasce come parte di un percorso formativo di 150 ore dedicato alla Cyber Security, durante il quale vengono affrontati temi fondamentali come minacce, vulnerabilità, gestione del rischio, buone pratiche, protezione dei dati ecc.
+
+Saranno spiegati anche alcuni programmi, il perche del loro utilizzo, senza entrare in spiegazioni di codice ma solo a livello teorico.
 
 ## Accesso e modalità di utilizzo
 La repository è pubblica e consultabile da chiunque, ma non è aperta a contributi esterni.  
@@ -37,6 +39,8 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - RTO (Recovery Time Objective)
 - Tipi di dati sensibilità e protezione
 - Cancellazione dei file
+- Cluster Failover
+- Database e DBA
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
