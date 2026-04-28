@@ -41,6 +41,8 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Cancellazione dei file
 - Cluster Failover
 - Database e DBA
+- Dispositivi IoT
+- Vlan (Virtual local access Network)
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
