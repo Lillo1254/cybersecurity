@@ -1,0 +1,278 @@
+# FIREWALL (hardware e software)
+Quando parliamo di firewall, ci riferiamo a sistemi — hardware o software — progettati per controllare il traffico di rete e impedire accessi non autorizzati.
+Nel tempo si sono evoluti in quattro generazioni principali, ognuna più intelligente e sicura della precedente.
+1) Firewall a filtro di pacchetti (prima generazione)
+Questi sono i firewall più semplici e più antichi.
+Analizzano solo i pacchetti in modo isolato, senza alcuna informazione sul contesto della comunicazione.
+
+**Cosa controllano? I parametri statici:**
+- IP sorgente
+- IP destinazione
+- Porta sorgente
+- Porta destinazione
+- Protocollo (TCP, UDP, ICMP…)
+
+Questi campi sono “statici” perché appartengono all’header del pacchetto e non cambiano durante il viaggio.
+
+**Perché non sono sufficienti?**
+
+Perché possono essere facilmente ingannati tramite spoofing.
+
+**Cos’è lo spoofing?**
+
+Lo spoofing è una tecnica in cui un attaccante falsifica l’identità di un pacchetto, ad esempio modificando l’IP sorgente per farlo sembrare proveniente da una macchina affidabile.
+È come se qualcuno ti inviasse una lettera firmata con il nome di un tuo amico: tu ti fidi, ma la lettera non è sua.
+I firewall di prima generazione non hanno modo di accorgersene.
+
+2) Stateful Inspection Firewall (seconda generazione)
+Questi firewall rappresentano un enorme passo avanti.
+A differenza dei precedenti, non guardano solo i pacchetti, ma tengono traccia dello stato della connessione.
+
+**Cosa significa “stato”?**
+
+Il firewall mantiene una tabella delle connessioni attive, dove registra:
+- chi ha iniziato la comunicazione
+- quali porte sono state aperte
+- quali pacchetti appartengono alla stessa sessione
+
+**Perché è più sicuro?**
+
+- Perché può verificare se un pacchetto:
+- appartiene a una connessione già esistente
+- è coerente con la logica della comunicazione
+
+In pratica impedisce che un host invii una risposta se non c’è stata una richiesta.
+Questo blocca molti attacchi basati su pacchetti falsificati.
+
+3) Proxy Firewall (Application Level Gateway)
+Questi firewall lavorano a un livello ancora più alto: il livello applicativo.
+
+**Come funzionano?**
+
+Agiscono come intermediari:
+- Client → Proxy → Server di destinazione
+- Il client non comunica mai direttamente con il server esterno.
+
+**Cosa possono fare?**
+
+Analizzano il contenuto delle richieste, non solo gli header.
+**Possono quindi bloccare:**
+- richieste HTTP sospette
+- comandi FTP pericolosi
+- traffico non conforme ai protocolli
+
+Sono molto efficaci per controllare applicazioni specifiche.
+
+4) Next-Generation Firewall (NGFW)
+I firewall più moderni combinano tutte le funzioni precedenti e aggiungono tecnologie avanzate.
+
+**Cosa includono?**
+- DPI (Deep Packet Inspection)  
+    - Analisi approfondita del contenuto dei pacchetti, anche all’interno dei dati applicativi.
+
+IPS (Intrusion Prevention System)  
+- Sistema che riconosce e blocca attacchi in tempo reale, basandosi su firme e comportamenti anomali.
+
+**Analisi malware  **
+- Il firewall confronta il traffico con database di minacce note e può usare sandbox per analizzare file sospetti.
+
+**Perché sono indispensabili oggi?**
+
+Perché riconoscono l’uso anomalo degli stessi protocolli.
+Esempio:
+- HTTP legittimo vs HTTP usato per esfiltrare dati.
+- Cosa sono le APT (Advanced Persistent Threat)?
+- Le APT sono minacce avanzate e persistenti:
+    - attacchi sofisticati, mirati e di lunga durata, spesso condotti da gruppi organizzati.
+
+Caratteristiche:
+- obiettivi specifici (aziende, enti governativi…)
+- tecniche avanzate
+- lunga permanenza nella rete senza essere scoperti
+- furto di dati sensibili o sabotaggio
+  
+**I NGFW sono progettati proprio per contrastare questo tipo di attacchi.**
+
+5) SSL Forward Proxy (Man-in-the-Middle legittimo)
+L’SSL Forward Proxy è una tecnica utilizzata dai firewall aziendali per intercettare, decifrare, analizzare e ricifrare il traffico HTTPS dei dipendenti.
+È un man-in-the-middle autorizzato, usato per motivi di sicurezza.
+
+L’obiettivo è semplice:
+
+controllare cosa passa dentro il traffico cifrato, che altrimenti sarebbe invisibile al firewall.
+**PC Utente → Firewall → Internet → Firewall → PC Utente**
+
+**COME FUNZIONA**
+1) Il client invia una richiesta HTTPS
+- Il PC dell’utente vuole visitare un sito sicuro, ad esempio: https://www.google.it
+- La richiesta arriva al firewall
+2) Il firewall NON inoltra subito la richiesta
+- Il firewall intercetta la connessione e non lascia che il client parli direttamente con il server esterno
+- legge il nome del sito richiesto (SNI)
+3) Il firewall crea un certificato “falso”
+- Il firewall genera un certificato per https://www.google.it ma firmato dalla CA interna dell’azienda
+- per funzionare deve essere installata la stessa CA sul pc che invia la richiesta marcata come attendibile
+4) Il firewall invia il certificato falso al client
+- Il PC dell’utente vede un certificato valido (perché la CA interna è fidata) e avvia l’handshake con il firewall, non con il server reale.
+- il client cifra i dati con la chiave pubblica del firewall
+- il firewall può decifrarli
+5) Il firewall apre una seconda connessione verso il server reale
+Ora il firewall si comporta come un client:
+- si collega al vero server https://www.google.it
+- fa un handshake SSL autentico
+- riceve il certificato reale del sito
+- **doppia connessione** Client ↔ Firewall  (HTTPS 1) e poi Firewall ↔ Server  (HTTPS 2)
+6) Il firewall decifra, analizza e ricifra il traffico
+Il firewall:
+- decifra i dati provenienti dal client
+- analizza il contenuto con i suoi motori di sicurezza
+- se tutto è ok, ricifra i dati con la chiave del server reale
+- li inoltra verso Internet
+  
+**E lo stesso processo avviene al ritorno.**
+
+**Cosa analizza il firewall?**
+1) Malware
+- file scaricati
+- script malevoli
+- exploit
+- payload nascosti nel traffico HTTPS
+
+2) Violazioni della privacy o delle policy aziendali
+Esempi:
+- invio di dati sensibili verso siti non autorizzati
+- upload di database aziendali su cloud personali
+- utilizzo di protocolli vietati
+- accesso a siti non conformi alle policy
+
+3) Comportamenti anomali
+- tunneling dentro HTTPS
+- traffico cifrato usato per esfiltrare dati
+- connessioni verso server Command & Control
+
+Perché serve installare la CA interna?
+Perché il firewall deve essere in grado di:
+- generare certificati “al volo”
+- farli accettare ai browser dei dipendenti
+- evitare errori di sicurezza
+- Senza la CA interna installata, Chrome/Firefox/Edge mostrerebbero:
+**“La connessione non è privata”**
+
+**Cos’è una Group Policy (GPO)?**
+Le Group Policy sono regole amministrative usate nelle reti Windows aziendali per configurare automaticamente i computer del dominio.
+
+Permettono di:
+- installare certificati
+- configurare browser
+- impostare restrizioni
+- distribuire software
+- applicare policy di sicurezza
+
+Una GPO viene applicata a:
+- utenti
+- gruppi
+- computer
+- intere OU (Organizational Unit)
+
+In questo caso, la GPO serve per:
+- Installare automaticamente il certificato della CA interna su tutti i PC aziendali e marcarlo come attendibile.
+
+1) SNI — Server Name Indication
+Lo SNI è un’estensione del protocollo TLS che permette al client di comunicare al server il nome del dominio che vuole raggiungere prima che inizi la cifratura esiste poiche molti server ospitano più siti sullo stesso indirizzo IP (hosting condiviso) quindi il server deve sapere quale certificato presentare.
+è importante il firewall perche lo SNI è in chiaro quindi il firewall può vedere il dominio richiesto anche se il resto della comunicazione è cifrato ma questo permette il filtraggio del dominio la categorizzazione del traffico e l'applicazione delle policy come il blocco per i social il gambling ecc..
+
+2) ETA — Encrypted Traffic Analytics
+L’ETA è una tecnica avanzata che permette di analizzare il traffico cifrato senza decifrarlo.
+**Come funziona?**
+
+l firewall osserva metadati e pattern comportamentali, come:
+- lunghezza dei pacchetti
+- frequenza
+- tempi tra i pacchetti
+- caratteristiche dell’handshake TLS
+- anomalie statistiche
+Senza violare la privacy, può riconoscere:
+- malware che usa HTTPS
+- traffico verso server Command & Control
+- tunneling nascosto dentro TLS
+- comportamenti anomali rispetto al traffico legittimo
+**Non richiede decifrazione → meno uso di risorse hardware e nessun impatto sulla privacy**
+
+3) Uso di risorse hardware
+L’ispezione SSL completa (SSL Forward Proxy) richiede:
+- CPU per decifrare
+- CPU per ricifrare
+- memoria per mantenere le sessioni
+- motori di analisi (IPS, antimalware, DLP)
+Per questo molte aziende usano:
+- ETA per il traffico generico
+- SSL inspection solo per categorie ad alto rischio
+
+4) Certificati Pinned (Certificate Pinning)
+Il certificate pinning è una tecnica usata da app e siti per evitare attacchi MITM.
+
+Come funziona?
+L’applicazione memorizza:
+- l’hash del certificato
+- o la chiave pubblica del server
+- o un certificato specifico
+- Se il certificato ricevuto non corrisponde, la connessione viene bloccata.
+
+**Perché è un problema per i firewall?**
+Perché il firewall, facendo MITM, presenta un certificato diverso.
+Risultato:
+- l’app rileva l’anomalia
+- la connessione fallisce
+- il firewall non può ispezionare quel traffico
+Esempi tipici:
+- app bancarie
+- app governative
+- servizi di sicurezza
+- alcune app di messaggistica
+
+5) Creazione di una Whitelist SSL
+Le aziende creano una whitelist di domini o applicazioni che:
+- non devono essere ispezionati
+- devono essere lasciati passare con SSL originale
+
+Esempi:
+- home banking
+- servizi sanitari
+- servizi governativi
+- app con certificate pinning
+- siti che trattano dati sensibili (privacy)
+
+**Perché serve?**
+Per evitare:
+- problemi legali
+- problemi di privacy
+- malfunzionamenti delle app
+- errori di certificato
+
+6) Bypass SSL
+Il bypass SSL significa che il firewall:
+- NON intercetta
+- NON decifra
+- NON analizza
+il traffico verso determinati domini.
+
+**È una conseguenza della whitelist.**
+
+7) Identificazione SSL
+Quando il firewall non può decifrare il traffico (per pinning, privacy, whitelist), può comunque:
+- identificare l’applicazione
+- categorizzare il traffico
+- applicare policy di controllo
+
+Usa:
+- SNI
+- certificato del server
+- fingerprint TLS
+- ETA
+- analisi comportamentale
+
+Quindi anche senza vedere il contenuto, può:
+- bloccare categorie (es. gambling, adult, cloud storage)
+- applicare QoS (**QUALITY OF SERVICES** priorità a servizi specifici togliendo banda a servizi superflui es. priorità a voip videocall e meno banda per social streaming e download)
+- registrare log
+- rilevare anomalie

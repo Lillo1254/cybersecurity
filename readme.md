@@ -43,6 +43,7 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Database e DBA
 - Dispositivi IoT
 - Vlan (Virtual local access Network)
+- Firewall (hardware e software)
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
