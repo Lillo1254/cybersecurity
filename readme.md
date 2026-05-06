@@ -44,6 +44,9 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Dispositivi IoT
 - Vlan (Virtual local access Network)
 - Firewall (hardware e software)
+- SNI , ETA
+- MITM autorizzato
+- WhiteList
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
