@@ -51,6 +51,9 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Rapporto costi benefici
 - Mitigazione e Remediation
 - Roll-out e Roll-back
+- Branch Cut e Roll Forwards
+- Difesa in Profondita
+- Protezione Metodi Pagamento Online
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.

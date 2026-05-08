@@ -210,3 +210,133 @@ Comunicazione
 - avvisi agli utenti
 - comunicazioni interne ai team
 - aggiornamento della knowledge base archivio strutturato di informazioni tecniche e operative guide ai processi procedure ecc.
+
+# Database durante roll-out e roll-back
+ database sono sistemi stato‑dipendenti: contengono dati che cambiano continuamente Per questo, durante un roll‑out o un roll‑back, vanno trattati in modo diverso rispetto a un’applicazione o a un servizio stateless
+
+ **Prima regola: MAI fare roll‑out senza un backup consistente**
+ Il database deve avere un backup completo, consistente e verificato immediatamente prima del roll‑out
+ Questo backup serve come:
+- piano di roll‑back
+- snapshot dello stato dei dati
+- punto di ripristino garantito
+
+Durante un roll‑out, l’applicazione può:
+- cambiare schema del database
+- aggiungere colonne
+- modificare tabelle
+- cambiare indici
+- trasformare dati
+
+Se fai un roll‑back dell’applicazione ma non del database, rischi:
+- incompatibilità
+- errori di lettura
+- corruzione dati
+- perdita di integrità referenziale
+
+## Strategie corrette per gestire i database
+1) Backup + Script di Migrazione Versionati
+Ogni release deve avere:
+- uno script di migrazione (upgrade)
+- uno script di rollback (downgrade)
+
+Esempi:
+- Flyway
+- Liquibase
+- Script SQL versionati
+
+2) Test delle migrazioni in staging
+Prima del roll‑out:
+- si applicano le migrazioni in un ambiente di staging
+- si verifica che l’applicazione funzioni
+- si testa anche il rollback
+
+Se il rollback non funziona in staging, NON si procede in produzione
+
+3) Blue‑Green Deployment per i database?
+Per i database è difficile, ma possibile se:
+- il database è replicato
+- si usa un sistema di shadow tables
+- si applicano migrazioni backward‑compatible
+
+# Principio di Integrità Referenziale
+L’integrità referenziale è una regola dei database relazionali che garantisce che le relazioni tra tabelle rimangano sempre coerenti Non possono esistere riferimenti a dati che non esistono
+
+In un database relazionale hai:
+- una Primary Key (PK) → identifica un record
+- una Foreign Key (FK) → punta alla PK di un’altra tabella
+
+L’integrità referenziale garantisce che:
+- ogni FK deve puntare a una PK esistente
+- non puoi cancellare una PK se esistono FK che la usano
+- non puoi modificare una PK senza aggiornare le FK collegate
+
+**a seconda della relazione delle tabelle tra i dati "one to many...one to one...many to many**
+
+# Point‑In‑Time Recovery (PITR)
+Il Point‑In‑Time Recovery (PITR) è la capacità di ripristinare un database esattamente a un momento specifico nel passato, non solo all’ultimo backup completo.
+
+Il PITR è fondamentale quando:
+- un’applicazione ha scritto dati sbagliati
+- una patch ha corrotto il database
+- un utente ha cancellato dati per errore
+- un ransomware ha cifrato solo parte del DB
+- una migrazione ha fallito
+- un roll‑out ha generato inconsistenze
+
+Il PITR si basa su due elementi:
+- Backup completo (full backup)
+- Log delle transazioni (transaction log / WAL / redo log)
+
+Il database registra ogni modifica nei log.
+Durante il ripristino:
+- si ripristina il backup completo
+- si “riapplicano” i log fino al minuto/secondo desiderato
+
+# Branch Cut
+Il branch cut è il momento in cui si “taglia” un ramo (branch) del repository per bloccare una versione del codice e prepararla alla release si congela il codice, si crea un branch dedicato alla release e da quel momento in poi solo fix critici possono essere aggiunti. È un concetto chiave in GitFlow, trunk‑based development e in qualsiasi pipeline CI/CD professionale.
+
+Il branch cut serve a:
+- stabilizzare una release
+- evitare che nuove funzionalità entrino per errore
+- permettere ai team di continuare a sviluppare sul branch principale
+- isolare bugfix e patch della release
+- preparare il codice al roll‑out in produzione
+
+**Come funziona**
+Il team decide che la release è pronta.
+
+Si crea un branch dedicato:
+- release/v1.4
+- hotfix/2026-05-08
+
+Quel branch viene congelato:
+- niente nuove feature
+- solo bugfix
+- solo patch critiche
+- Il branch viene testato, validato e preparato al deploy.
+
+Una volta rilasciato, il branch viene:
+- taggato (v1.4.0)
+- eventualmente chiuso
+- mergiato in main e develop
+
+**Il branch cut è il checkpoint della release.**
+
+# Roll‑Forward dei Log
+Il roll‑forward è il processo con cui un database, dopo essere stato ripristinato da un backup, riapplica tutte le transazioni registrate nei log per riportarlo a uno stato più recente.
+
+Un backup completo fotografa il database in un momento preciso.
+
+Ma tra quel momento e l’incidente possono essere passate:
+- ore
+- giorni
+- settimane
+
+Durante questo tempo il database ha registrato:
+- inserimenti
+- aggiornamenti
+- cancellazioni
+- transazioni complesse
+
+**Il roll‑forward permette di non perdere questi dati.**
