@@ -18,7 +18,7 @@ Questa scelta garantisce coerenza, qualità e affidabilità del materiale pubbli
 All’interno della repository sono disponibili spiegazioni semplificate riguardanti:
 
 - Concetti fondamentali di cybersecurity  
-- Terminologia tecnica essenziale  
+- Terminologia tecnica essenziale
 - Esempi pratici e scenari reali  
 - Buone pratiche per la protezione dei dati  
 - Analisi di minacce, vulnerabilità e rischi  
@@ -47,6 +47,10 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - SNI , ETA
 - MITM autorizzato
 - WhiteList
+- Windows server
+- Rapporto costi benefici
+- Mitigazione e Remediation
+- Roll-out e Roll-back
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.

@@ -276,3 +276,189 @@ Quindi anche senza vedere il contenuto, può:
 - applicare QoS (**QUALITY OF SERVICES** priorità a servizi specifici togliendo banda a servizi superflui es. priorità a voip videocall e meno banda per social streaming e download)
 - registrare log
 - rilevare anomalie
+
+# policy BYOD ( bring your own device)
+
+La BYOD è una politica aziendale che permette ai dipendenti di usare i propri dispositivi personali (smartphone, tablet, laptop) per lavorare: accedere alle email aziendali, ai documenti, alle app interne, ai sistemi gestionali **Invece di darti un telefono aziendale, puoi usare il tuo. Ma seguendo regole precise**
+
+**Le motivazioni principali sono tre: costi, produttività, flessibilità**
+1) Riduzione dei costi
+- L’azienda non deve comprare smartphone, tablet o PC per tutti.
+- Non deve gestire manutenzione, sostituzioni, aggiornamenti hardware
+  
+2) Aumento della produttività
+- Le persone lavorano più velocemente con un dispositivo che conoscono già.
+- Esempio: un dipendente risponde alle email dal proprio smartphone anche fuori ufficio
+  
+3) Maggiore flessibilità
+Perfetto per:
+- smart working
+- lavoro ibrido
+- tecnici e commerciali sempre in movimento
+
+Per implementare questa policy aziendale servono delle regole ben specifiche stipulate dall'azienda stessa per:
+- quali dispositivi sono ammessi
+- quali sistemi operativi minimi
+- quali app aziendali si possono installare
+- quali comportamenti sono vietati
+
+**MDM / MAM – Mobile Device Management**
+
+L’azienda installa una gestione separata sul dispositivo del dipendente.
+Serve per:
+- separare dati personali e aziendali
+- poter cancellare solo i dati aziendali in caso di furto
+- imporre PIN, cifratura, aggiornamenti
+- controllare l’accesso alle app aziendali
+- Esempi: Microsoft Intune, VMware Workspace ONE, MobileIron.
+
+**Cifratura e autenticazione forte**
+
+La policy richiede:
+- PIN o biometria obbligatori
+- cifratura del dispositivo
+- autenticazione a due fattori (MFA)
+
+**Segmentazione dei dati**
+
+I dati aziendali devono essere contenuti in un’area protetta, separata da foto, app personali, WhatsApp, ecc.
+
+**Formazione del personale**
+
+La BYOD funziona solo se i dipendenti capiscono:
+- cosa possono fare
+- cosa non possono fare
+- perché le regole esistono
+
+## Monitoraggio e Statuto dei Lavoratori
+L’azienda può utilizzare strumenti che possono controllare l’attività del lavoratore solo per esigenze organizzative, produttive, di sicurezza o tutela del patrimonio aziendale quindi "non è vietato il controllo, ma è vietato il controllo “per controllare il lavoratore” e Il controllo è ammesso solo come effetto collaterale dell’uso di strumenti necessari al lavoro
+
+## Accountability
+L’accountability è il principio secondo cui ogni attività deve avere un responsabile chiaro, che risponde delle decisioni prese e delle conseguenze che ne derivano
+
+## Finalità ammesse del monitoraggio
+Le finalità ammesse sono solo queste quattro:
+- Esigenze organizzative  
+    - garantire continuità del servizio, bilanciare carichi di lavoro.
+
+- Esigenze produttive  
+    - monitorare performance dei sistemi, non delle persone.
+
+- Sicurezza del lavoro e delle infrastrutture  
+    - prevenire intrusioni, malware, accessi non autorizzati.
+
+- Tutela del patrimonio aziendale  
+    - proteggere dati, asset, proprietà intellettuale.
+
+**Qualsiasi monitoraggio che esce da queste finalità è illegittimo**
+
+## Filtraggio e analisi dei log
+Il filtraggio del traffico Internet, l’analisi dei log, il controllo degli accessi sono leciti se rispettano tre condizioni:
+1) Finalità legittima
+Devono servire a:
+- sicurezza informatica
+- prevenzione incidenti
+- continuità operativa
+- tutela del patrimonio aziendale
+
+2) Proporzionalità
+- Non si possono raccogliere più dati del necessario.
+Esempio:
+Log di accesso → ok
+Registrare ogni singolo sito visitato con dettaglio minuto per minuto → eccessivo
+
+3) Minimizzazione dei dati personali
+I log devono essere:
+- anonimizzati quando possibile
+- conservati per un tempo limitato
+- accessibili solo a personale autorizzato
+  
+## Obbligo di informativa al lavoratore
+L’azienda deve informare i lavoratori in modo chiaro e comprensibile su:
+- quali strumenti usano
+- quali dati vengono raccolti
+- per quali finalità
+- per quanto tempo
+- chi può accedere ai dati
+- quali controlli possono derivare dagli strumenti
+- 
+## Internet Policy: perché è obbligatoria
+L’Internet Policy è il documento che spiega:
+- come si può usare Internet in azienda
+- quali comportamenti sono vietati
+- quali controlli tecnici vengono effettuati
+- come vengono gestiti i log
+- quali rischi si vogliono prevenire
+
+Serve a:
+- tutelare l’azienda
+- tutelare il lavoratore
+- rendere trasparente il monitoraggio
+- garantire conformità a GDPR e Statuto dei Lavoratori
+
+## Sicurezza delle infrastrutture: perché giustifica il monitoraggio
+La sicurezza informatica è una delle finalità più forti che legittimano il monitoraggio.
+
+controlli ammessi:
+- firewall che registra traffico sospetto
+- sistemi IDS/IPS
+- antivirus e antimalware
+- sistemi di autenticazione e log di accesso
+- monitoraggio delle anomalie di rete
+
+Questi strumenti non servono a controllare il lavoratore, ma a proteggere:
+- dati aziendali
+- infrastrutture
+- clienti
+- continuità del servizio
+
+## Open Internet UE
+Tutti gli utenti devono poter accedere ai contenuti, servizi e applicazioni online senza blocchi, discriminazioni o rallentamenti ingiustificati
+
+**Neutralità della rete**
+Tutto il traffico Internet deve essere trattato allo stesso modo, indipendentemente da chi lo invia, da cosa contiene o da quale servizio utilizzi
+
+La normativa UE permette alcune eccezioni, ma solo se giustificate
+
+**Gestione del traffico per motivi tecnici**
+- congestione temporanea della rete
+- attacchi DDoS
+- guasti o emergenze
+
+**Servizi specializzati**
+- telemedicina
+- auto connesse
+- servizi industriali critici
+
+# Windows Server
+windows server offre la possibilità di creare gruppi interni per organizzare utenti dispositivi ecc. e per assegnare autorizzazioni in modo centralizzato
+
+Tipi principali di gruppi:
+- Gruppi di sicurezza  
+    - Servono per dare o negare permessi (cartelle, stampanti, login, policy).
+
+- Gruppi di distribuzione  
+    - Usati per email e comunicazioni, non per autorizzazioni.
+
+Ambito dei gruppi
+- Domain Local → permessi su risorse locali del dominio
+- Global → gruppi di utenti della stessa organizzazione
+- Universal → gruppi che attraversano più domini
+
+**In Windows Server è normale e corretto che un utente appartenga a più gruppi**
+
+## Policy di certificati tramite Group Policy
+Le GPO permettono di distribuire automaticamente:
+
+- certificati aziendali
+- certificati per Wi‑Fi 802.1X
+- certificati per VPN
+- certificati per firma digitale
+- certificati per server e servizi
+
+è molto importante poiche permette di autenticare utenti e dispositivi abilitare connessioni sicure applicare crittografia firmare emial o documenti
+
+le GPO permentto di assegnare permessi su cartella specifiche configurare firewall distribuire software impostare password policy configurare desktop menu drive mappati e bloccare funzioni su utilizzo usb pannello di controllo command line powershell
+
+## Principio di isolamento
+è il principio fondamentale con il quale una macchina virtuale rimane isolata dalle altre macchine per evitare propagazione malware accessi non autorizzati fuga di dati o escalation laterale

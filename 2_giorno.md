@@ -164,5 +164,3 @@ Sono enti riconosciuti a livello mondiale per il rilascio di certificati digital
 # GARANTI DI CHIAVI (key escrow)
 Il garante di chiavi è un sistema che trasferisce una chiave sensibile o privata ad un terzo soggetto finche delle determinate condizioni non vengono soddisfatte.
 La problematica al riguarda di questo soggetto riguarda la fiducia e la valutazione dell'onestà rispetto a chi o cos'è il soggetto a cui viene inviata la chiave. La domanda sembra scontata...perche passare la mia chiave privata ad un terzo? poiche essendo umani potremmo perdere semplicemente la chiave, dimenticarla, subire un danno nella posizione di salvataggio della chiave...sostanzialmente è come avere un buckup della propria chiave privata in modo da non perderla mai definitivamente.Il Key Escrow è molto controverso perché implica che un terzo possa accedere alla chiave privata è usato solo in contesti specifici.
-
-# RIEPILOGO
