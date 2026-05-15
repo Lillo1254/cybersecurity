@@ -54,6 +54,11 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Branch Cut e Roll Forwards
 - Difesa in Profondita
 - Protezione Metodi Pagamento Online
+- Firewall
+- Project management
+- Penetration testing
+- Kali Linux Nmap e Wireshark
+- Comandi Principali (shell, nmap, linux)
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
