@@ -1,3 +1,5 @@
+**Le informazioni, i comandi, gli script e gli scenari descritti in questo documento sono rilasciati esclusivamente a scopo didattico, di studio, di ricerca accademica e per il test autorizzato della sicurezza dei sistemi (Ethical Hacking / Penetration Testing). Questo materiale ha l'unico obiettivo di far comprendere i meccanismi di difesa e vulnerabilità dei sistemi informatici.**
+
 # situazione ipotetica
 Sei stato assunto come consulente di sicurezza (Ethical Hacker) da una piccola azienda. Il manager è preoccupato perché ha notato strani rallentamenti nella rete interna. Ti viene chiesto di collegarti alla LAN aziendale, identificare i dispositivi connessi, trovare porte aperte potenzialmente pericolose sul server principale (es. 192.168.1.1) e verificare se ci sono vulnerabilità note (CVE) che un malintenzionato potrebbe sfruttare.
 
