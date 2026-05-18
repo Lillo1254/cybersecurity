@@ -96,3 +96,72 @@ Bisogna controllare la versione del Kernel della macchina attaccata per verifica
 
 **Report finale**
 L'obiettivo era bypassare le difese dei blocchi ICMP usando poaccehtti ARP (-PR) o TCP SYN(-Pn -PS) per effettuare una mappatura stealth con SYN Scan(-sS) per non rendere piu difficile la creaizone di log di comunicazione una volta effettuata questa scansione abbiamo puntato ad un servizio specifico indentificando una CVE remota e tramite questa CVE ci siamo mossi lateralmente entrando nella Shell superando il perimetro aziendale e successivamente scansionato il Kernel effettuato un privilege escaltion per avere controllo completo della macchina 
+
+# situazione ipotetica 3
+entriamo in azienda ed il monitoraggio d'ufficio segnala delle anomalie un server interno sta subendo un trasferimento di dati verso l'esterno in grande quantità quindi ci colleghiamo ala rete
+
+**primo comando per identificare il nostro indirizzo IP**
+- ip a 
+  - controlliamo la nostra scheda di rete eth' o wlan0 cosi da poter leggere IP e sottorete 
+
+successivamente abbimao necessita di capire quale sia il router principale e per saperlo dobbiamo controllar ela tabella di routing
+- ip route show 
+  - ci fornire un risultato simile a "default [IP] dev eth0 dove l'IP sarà proprio l'indirizzo del router principale dove passa ogni pacchetto verso internet
+
+purtroppo la rete è complessa poiche ci sono altri switch e router in diversi uffici prima di arrivare all'esterno quindi per controllare quale sia il gateway principale dobbiamo vedere quanti "salti" fanno i pacchetti per raggiungere l'esterno e per fare questo manderemo dei pacchetti verso un indirizzo IP esterno come per esempio google che ha IP 8.8.8.8 con il comando 
+- traceroute 8.8.8.8
+  - questo comando restituisce un IP per ogni router intermedio che attraversa prima di arrivare all'esterno della nsotra rete cosi da capire quali sono gli IP intermedi che vengono attraversati
+
+abbiamo trovato il router principale e ora dobbiamo effettuare una scansione di massa per trovare i server e tutti i dispositivi connessi accesi e capirne le funzioni per capire se sono pc dei dipendenti stampanti o server per fare questo utilizziamo il comando 
+- sudo nmap -sn -F --traceroute [IP]
+  - -sn controlla se un ip risponde
+  - -F fa un controllo veloce sulle 100 porte note piu utilizzate per dare un indizio su quale dispositivo sia connesso
+  - --traceroute traccia la mappa geografica/logica dei collegamenti tra il nostro kali linux e i dispositivi trovati
+- otteniamo quindi una lista di IP dove possiamo trovare il router principale i pc connessi e i server riconoscibili da nomi host MAC address e utilizzo di porte specifiche
+
+**Ispezione Rapida delle Porte Aperte (Investigazione)**
+
+abbiamo capito che il server ha un IP es. 10.0.0.50 dobbiamo capire subito quali porte sono attive in questo momento e stanno scambiando traffico se abbiamo possibilità di accedere direttamente al terminale del server inserendo nome utente e ip del server creando una connessione SSH
+- ssh nome_utente@10.0.0.50
+- se la porta ssh non è la porta di default (22) bisogna specificarlo con l'opzione -p quindi il comando sara **ssh nome_utente@10.0.0.50 -p [numero porta]**
+
+
+ora possiamo utilizzare il terminale del server dopo aver effettuato ovviamente l'accesso per farlo utilizziamo il comando
+- sudo ss -tupn
+  - questo comando ci mostrera tutte le connessioni TCP/UDP attive i relativi processi e gli IP remoti connessi
+  - ovviamente in uno scenario di esfiltrazione dati avremo una riga anomala tipo **ESTAB  0  45210  10.0.0.50:4444  ->  198.51.100.7:53211 (proc: nc)**
+    - ESTAB indica lo stato della connessione "Established"
+    - 0 indica che non ci sono dati bloccati in attesa di essere lavorati e che pertanto il traffico scorre normalmente
+    - 45210 indica i bytes trasferiti oppure l'ID interno di connessione
+    - 10.0.0.50:4444 è l'ip sorgente e il numero di porta utilizzata per l'esfiltrazione
+    - -> indica la connessio il verso del trasferimento dei dati
+    - 198.51.100.7:53211 è il punto di destinazione remoto e la porta utilizzata
+    - (proc: nc) processo netcat ovvero uno strumento di rete per creare una connessione da parte dell'hacker per inviare dati al suo server
+
+ora abbiamo la certezza che un IP remoto che non fa parte della rete aziendale viene usato come punto di arrivo per estrapolare dati dal nostro server
+
+se invece non fosse possibile utilizzare il server direttamente tramite terminale dobbiamo ispezionare le connessioni dall'esterno cercando con Nmap servizi insoliti per fare questo utilizziamo il comando 
+- sudo nmap -sV -p- --open 10.0.0.50
+  - -sV identifica il servizio
+  - -p- scansiona tutte le 65535 porte
+  - --open mostra solo le porte aperte
+questo comando identifichera una prota sospetta ovviamente come in precedenza la 4444 ma adesso abbiamo isolato il problema e dobbiamo attuare il blocco per impedire un ulteriore esfiltrazione di dati
+
+**abbiamo due opzioni per esempio dettate dalla policy di sicurezza**
+
+opzione 1:
+- bloccare immediamente le connessione esterne su quella porta senza spegnere brutalmente il server ( per analizzare la memoria volatile del processo in un secondo momento)
+  - sudo iptables -A INPUT -p tcp --dport 4444 -j DROP
+    - questo comando scarta qualsiasi pacchetto in entrata o in uscita dalla prota 4444 direttamente dal kernel interrompendo la comunicaizone immediamente
+
+opzione 2:
+- bloccare direttamente il software che tiene aperta la porta per eradicare la minaccia
+  - identifichiamo precisamente il PID (process ID) con il comando
+    - sudo lsof -t -i :4444 che ci restituisce un PID
+  - chiudiamo il processo in corso 
+    - sudo kill -9 [PID]
+      - il -9 è un segnale inviato al sistema operativo che dice al software di interrompere istantaneamente il processo segnato
+        - normalmente il comando sudo kill [PID] invia un segnale al sistema operativo con la richiesta di chiusura del processo ma i malware e trojan ignorano questa richeista
+    - cosi facendo il processo viene terminato e la porta passa dallo stato di open a closed automaticamente e l'attaccante ha perso il controllo del server
+
+poiche l'attacante potrebbe intervenire nuovamente su altre porte dello stesso IP su cui ha trovato una vulnerabilita dobbiamo intervenire sul router principale configurando una nuova regola che impedisce (DENY) IP sorgente(ANY qualsiasi) porta sorgente (ANY) IP destinazione (10.0.0.50) e anche una regola a livello globale sul router o firewall per bloccare l'ip dell'attacnte inserendolo in una blacklsit
