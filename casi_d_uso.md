@@ -303,5 +303,7 @@ Cancella i file o le cartelle specifiche del malware
 
 Ora che hai rimosso tutti i punti di persistenza possiamo completare l'operazione terminando completamente il processo in RAM
 
-- **sudo kill -9 [PID] && sudo rm -f /percorso/esatto/scoperto/prima/malware** l'operatore " && " esegue il secondo comando solo se il primo è andato a buon fine (se il servizio è gia terminato il primo comando fallira e il secondo comando non partirà mai )
-- **sudo kill -9 [PID] ; sudo rm -f /percorso/esatto/scoperto/prima/malware** l'operatore " ; " esegue i comandi a preiscindere l'uno dall'altro (se il servizio è gia terminato il primo comando fallira ma il secondo effettuera comunque la cancellazione dell'eseguibile)
+- **sudo kill -9 [PID] && sudo rm -f /percorso/esatto/scoperto/prima/malware** 
+  - l'operatore " && " esegue il secondo comando solo se il primo è andato a buon fine (se il servizio è gia terminato il primo comando fallira e il secondo comando non partirà mai )
+- **sudo kill -9 [PID] ; sudo rm -f /percorso/esatto/scoperto/prima/malware** 
+  - l'operatore " ; " esegue i comandi a preiscindere l'uno dall'altro (se il servizio è gia terminato il primo comando fallira ma il secondo effettuera comunque la cancellazione dell'eseguibile)
