@@ -47,6 +47,11 @@ history: Mostra gli ultimi comandi digitati (utile per riprendere sessioni di la
 
 /var/log/lastlog : Registra l'ultimo accesso di ogni utente
 
+sudo iftop -i eth0  : Mostra una tabella in tempo reale delle connessioni attive e quanta banda stanno consumando (in Mb/s o Kb/s), con delle barre grafiche orizzontali (eth0, wlan0, any) premere il tasto " p " per visualizzare le porte e il tasto " b " per avere la media dei MB al secondo per verificare quale porta consuma di piu
+
+sudo apt install nload
+sudo nload  : andamento globale del server (Dati in entrata vs Dati in uscita) espresso chiaramente in MB/s tramite un grafico ASCII animato che si muovono in tempo reale mostrando il picco attuale, medio e minimo di dati che lasciano il sistema
+
 3. Prompt Comandi Kali Linux (Specifici Pentesting)
 Kali include strumenti preinstallati che si richiamano direttamente da terminale.
 
