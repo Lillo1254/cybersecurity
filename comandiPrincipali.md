@@ -130,6 +130,8 @@ nmap --script default [IP]: Esegue gli script standard di sicurezza.
 
 nmap --script vuln [IP]: Esegue tutti gli script della categoria "vulnerability" per trovare bug noti.
 
+nmap -sV -F -Pn --script vulners [IP] : esegue una scansione veloce delle vulnerabilità note saltanto la fase di ping
+
 nmap --script auth [IP]: Testa le credenziali di default per vari servizi (HTTP, FTP, Telnet).
 
 nmap --script brute [IP]: Tenta attacchi di forza bruta contro i servizi individuati.
