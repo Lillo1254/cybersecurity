@@ -59,6 +59,7 @@ All’interno della repository sono disponibili spiegazioni semplificate riguard
 - Penetration testing
 - Kali Linux Nmap e Wireshark
 - Comandi Principali (shell, nmap, linux)
+- Casi d'uso
 - in aggiornamento... 
 
 Ogni contenuto è strutturato per essere chiaro, diretto e facilmente applicabile.
