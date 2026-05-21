@@ -8,9 +8,15 @@ una volta effettuato il download e aver proceduto all'installazione si può proc
 
 - link per scaricare kali linux in formato .vdkm per avere una macchina https://www.kali.org/get-kali/#kali-virtual-machines
     -  nome "a scelta" sistema **linux** distribuzione **debian**  versione **debian-64bit**
+    -  all'apertura della macchina virtuale verranno richiesti i dati di accesso
+       -  nome utente "kali"
+       -  password "kali"
 - link per scaricare metaeploitable come macchina virtuale vulnerabile https://sourceforge.net/projects/metasploitable/files/latest/download
     - nome "a scelta" sistema **linux** distribuzione **ubuntu** versione **ubuntu-64bit**
     - mentre la virtual box di kali linux comprende già un file in formato vdkm autoinstallabile la piattaforma metaesploitable deve essere importata nel pannello di controllo al momento della creazione di una nuova virtual machine andando in fondo e inserendo direttamenteil disco
+    - all'apertura della macchina virtuale il terminale mostrerà la fase di login
+      - nome utente "msfadmin"
+      - password "msfadmin" (in questo terminale la password è nascosta mentre viene digitata)
 
 ## le impostazioni principale delle macchine virtuali 
 arrivati alla scheda di rete dobbiamo impostare per un ambiente sicuro la rete di kali linux su rete interna per creare un ambiente contenitore locale all'interno della virtual box e attivare la modalita promiscua per utilizzare a pieno tutti i comandi nmap e la scheda di rete di metaesploitable sempre su rete interna per colelgarsi alla stessa rete vlan interna creata dalla virtual box stessa

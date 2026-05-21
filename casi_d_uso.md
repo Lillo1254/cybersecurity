@@ -114,7 +114,7 @@ purtroppo la rete è complessa poiche ci sono altri switch e router in diversi u
   - questo comando restituisce un IP per ogni router intermedio che attraversa prima di arrivare all'esterno della nsotra rete cosi da capire quali sono gli IP intermedi che vengono attraversati
 
 abbiamo trovato il router principale e ora dobbiamo effettuare una scansione di massa per trovare i server e tutti i dispositivi connessi accesi e capirne le funzioni per capire se sono pc dei dipendenti stampanti o server per fare questo utilizziamo il comando 
-- **sudo nmap -sn -F --traceroute [IP]**
+- **sudo nmap -sn {-F} --traceroute [IP]**
   - -sn controlla se un ip risponde
   - -F fa un controllo veloce sulle 100 porte note piu utilizzate per dare un indizio su quale dispositivo sia connesso
   - --traceroute traccia la mappa geografica/logica dei collegamenti tra il nostro kali linux e i dispositivi trovati

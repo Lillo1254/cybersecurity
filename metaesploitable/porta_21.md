@@ -73,5 +73,36 @@ fase ricognitiva:
     - cd [nome_directory] che ci permette di cambiare directory
 - la cartella non risulta interessante? torniamo indietro
     - cd .. per tornare alla cartella precedente
+- dobbiamo capire dove siamo finiti visti i tanti spostamenti
+  - pwd ci mostra il percorso in cui ci troviamo in questo istante
+
+se si volesse spostare un file dalla nostra macchina kali linux in una macchina vulnerabile che ha una porta ssh aperta senza entrare nella macchina vulnerabile direttamente dobbiamo usare il comando "spc" (secure copy protocol) indicando il comando , il percorso del file, e la macchinavirtualevulnerabile@[ip] indicando con " : " in seguito il percorso di destinazione
+
+esempio per spostare un file chiamato "ciao.txt" salvato sul Desktop:
+- scp ~/Desktop/ciao.txt msfadmin@192.168.56.101:/home
+  - scp usa il protocollo sicuro per il trasferimento
+  - ~/Desktop/ciao.txt è il percorso dove si trova il nostro file
+  - msfadmin@192.168.56.101 è la macchina attaccata
+  - : servono dividere una macchina dall'altra fungono da separatori per funzionalita 
+  - /home è la destinazione in cui vogliamo far copiare il file
+
+se invece volessi copiar eper me dei dati si invertono le posizioni in questo modo:
+- scp msfadmin@192.168.56.101:/home/ciao.txt /Desktop/cartella_salvataggi
+  - scp utilizza sempre il protocollo sicuro
+  - msfadmin@192.168.56.101 è la macchina vulnerabile da cui vogliamo estrarre il file
+  - : separano l'ip della macchina dal resto del comando
+  - /home/ciao.txt è il file che vogliamo inviare
+  - /Desktop/cartella_salvataggi è la destinazione
+
+se invece come nel nostro caso sono già all'itnerno della macchina virtuale possiamo operare direttamente tramite la shell di metaesploitable utilizzando i suoi comandi. se vogliamo spostare un file dal nostro server per metterlo dentro la metaesploitable possiamo usare il comando:
+- wget http://[ip]/percorso/ciao.txt
+  - cosi facendo la macchina vulnerabile manda una richiesta get al nostro server per ricevere quel file specifico
+- wget http://[ip]/percorso/ciao.txt -O /percorso/dove/salvare/con/nuovo_nome.txt
+  - -O (Output Document) utilizziamo quest'opzione per fare due eventi specifici
+    - primo evento serve ad indicare di salvare il file in una cartella specifica
+    - secondo evento serve per rinominare il file qualora si voglia mettere un nome piu ingannevole
+-   wget http://[ip]/percorso/ciao.txt -P /percorso/dove/salvare/
+    -   -P indica il prefix e si utilizza qualora non si voglia rinominare il file ma solo indicare la carella di destinazione
+
 
 la cartella piu importante in un sistema linux è la cartella etc/ e versificare etc/shadow
