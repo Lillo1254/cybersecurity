@@ -67,7 +67,7 @@ searchsploit [servizio_versione]: Cerca nel database offline di Exploit-DB vulne
 
 hashcat -m [tipo_hash] [file_hash] [wordlist]: Avvia il cracking delle password via GPU.
 
-john --wordlist=[percorso] [file_hash]: Cracking di password via CPU (John the Ripper).
+john --wordlist=[percorso] [file_hash]: Cracking di password via CPU (John the Ripper) su una lista di word specifica.
 
 {
 scp : Secure Copy (usa il protocollo SSH per spostare file)

@@ -19,5 +19,5 @@ una volta effettuato il download e aver proceduto all'installazione si può proc
       - password "msfadmin" (in questo terminale la password è nascosta mentre viene digitata)
 
 ## le impostazioni principale delle macchine virtuali 
-arrivati alla scheda di rete dobbiamo impostare per un ambiente sicuro la rete di kali linux su rete interna per creare un ambiente contenitore locale all'interno della virtual box e attivare la modalita promiscua per utilizzare a pieno tutti i comandi nmap e la scheda di rete di metaesploitable sempre su rete interna per colelgarsi alla stessa rete vlan interna creata dalla virtual box stessa
+arrivati alla scheda di rete dobbiamo impostare per un ambiente sicuro la rete di kali linux su **rete interna** per creare un ambiente contenitore locale all'interno della virtual box e attivare la modalita promiscua per utilizzare a pieno tutti i comandi nmap e la scheda di rete di metaesploitable sempre su **rete interna** per colelgarsi alla stessa rete vlan interna creata dalla virtual box stessa il nome della rete interna sulle macchine che vogliamo che comunichino tra loro deve essere uguale identico per entrambe
 
