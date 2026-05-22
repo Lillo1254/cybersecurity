@@ -105,8 +105,10 @@ ci verra mostrata una stringa lunga questa stringa è la nostra public key ora d
 
 una volta fatto questo andiamo a capo di una riga per staccarci da possibili stringhe e premiamo ctrl + d per salvare il file ora non ci resta che blindare con permessi restrittivi la cartella .ssh e il file authorized_key per farlo utilizziamo i comandi:
 
-- chmod 700 /root/.ssh
-- chmod 600 /root/.ssh/authorized_keys
+- chmod 700 /root/.ssh solo utente root può entrare/modificare/leggere
+- chmod 600 /root/.ssh/authorized_keys solo l'utente root puo leggere/modificare
+  
+Il comando chmod (abbreviazione di change mode) è lo strumento fondamentale in Linux per gestire i permessi di file e cartelle per verificare i permessi possiamo lanciare il comando " ls -l " il server SSH applica una politica di sicurezza ultra-rigida chiamata "StrictModes" se nota che una cartella specifica o il file hanno una politica troppo permissiva manda in allarme il sistema e blocca la connessione
 
 ultima verifica fondamentale creiamo su un nuovo terminale una connessione ssh utilizzando il comando:
 
