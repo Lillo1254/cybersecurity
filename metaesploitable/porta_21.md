@@ -76,7 +76,7 @@ fase ricognitiva:
 - dobbiamo capire dove siamo finiti visti i tanti spostamenti
   - pwd ci mostra il percorso in cui ci troviamo in questo istante
 
-se si volesse spostare un file dalla nostra macchina kali linux in una macchina vulnerabile che ha una porta ssh aperta senza entrare nella macchina vulnerabile direttamente dobbiamo usare il comando "spc" (secure copy protocol) indicando il comando , il percorso del file, e la macchinavirtualevulnerabile@[ip] indicando con " : " in seguito il percorso di destinazione
+se si volesse spostare un file dalla nostra macchina kali linux in una macchina vulnerabile che ha una porta ssh aperta senza entrare nella macchina vulnerabile direttamente dobbiamo usare il comando "scp" (secure copy protocol) indicando il comando , il percorso del file, e la macchinavirtualevulnerabile@[ip] indicando con " : " in seguito il percorso di destinazione
 
 esempio per spostare un file chiamato "ciao.txt" salvato sul Desktop:
 - scp ~/Desktop/ciao.txt msfadmin@192.168.56.101:/home
@@ -94,7 +94,13 @@ se invece volessi copiar eper me dei dati si invertono le posizioni in questo mo
   - /home/ciao.txt è il file che vogliamo inviare
   - /Desktop/cartella_salvataggi è la destinazione
 
-se invece come nel nostro caso sono già all'itnerno della macchina virtuale possiamo operare direttamente tramite la shell di metaesploitable utilizzando i suoi comandi. se vogliamo spostare un file dal nostro server per metterlo dentro la metaesploitable possiamo usare il comando:
+bisogna vviare nella cartella var/www/html il server http della porta 80 con il comando
+
+- python3 -m http.server 80
+
+creiamo il file che vogliamo inviare alla macchina vulnerabile in questa cartella specifica e successivamente facciamo la richiesta dalla macchina vulnerabile al nostro server
+
+ora come nel nostro caso sono già all'itnerno della macchina virtuale possiamo operare direttamente tramite la shell di metaesploitable utilizzando i suoi comandi. se vogliamo spostare un file dal nostro server per metterlo dentro la metaesploitable possiamo usare il comando:
 - wget http://[ip]/percorso/ciao.txt
   - cosi facendo la macchina vulnerabile manda una richiesta get al nostro server per ricevere quel file specifico
 - wget http://[ip]/percorso/ciao.txt -O /percorso/dove/salvare/con/nuovo_nome.txt
