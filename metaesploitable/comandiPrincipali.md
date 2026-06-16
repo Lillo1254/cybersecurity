@@ -236,3 +236,12 @@ Pannello Inferiore (Esadecimale): Utile per vedere stringhe di testo in chiaro a
 5. Esportazione e ReportisticaAl termine della sessione pratica, i dati devono essere salvati per analisi forense o confronto futuro.
 - Salvataggio: I file vengono salvati in formato .pcapng o .pcap, lo standard universale leggibile anche da altri tool come tcpdump o tshark.  
 - Esportazione Oggetti: Se hai catturato traffico HTTP, puoi andare su File -> Export Objects -> HTTP per "estrarre" dal traffico di rete i file reali (immagini, PDF, script) che l'utente ha scaricato durante la sessione
+
+
+
+buttare giu una scheda di rete 
+- sudo ip link set eth0 down
+- sudo ip link set eth1 down
+tirare su una scheda di rete
+- sudo ip link set eth0 up
+- sudo ip link set eth1 up
